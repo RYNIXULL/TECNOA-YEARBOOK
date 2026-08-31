@@ -59,10 +59,11 @@ body {
    ======================================================== */
 .a4-page {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: 0 auto 2.5rem auto;
   background-color: #f7f3e8;
   position: relative;
+  overflow: hidden;
   box-sizing: border-box;
   page-break-after: always;
   
