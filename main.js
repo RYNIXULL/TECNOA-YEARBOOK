@@ -257,7 +257,7 @@ function renderStudentPages() {
         </div>
         
         <!-- 6 Students Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 flex-grow items-stretch py-1">
+        <div class="grid grid-cols-3 gap-3 flex-grow items-stretch py-1">
           ${studentsHTML}
         </div>
         
