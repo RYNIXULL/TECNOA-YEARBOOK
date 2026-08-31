@@ -58,8 +58,9 @@ body {
    A4 PAGE DIMENSIONS & REALISTIC VINTAGE PAPER FEEL
    ======================================================== */
 .a4-page {
-  width: 210mm;
-  height: 297mm;
+  /* Ukuran Kertas A4 + 3mm Bleed (Lebar: 210 + 6 = 216mm, Tinggi: 297 + 6 = 303mm) */
+  width: 216mm;
+  height: 303mm;
   margin: 0 auto 2.5rem auto;
   background-color: #f7f3e8;
   position: relative;
@@ -82,9 +83,9 @@ body {
     url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
   background-size: cover, cover, cover, auto;
   
-  /* Safe Area / Margins for Book Print */
-  padding-top: 1.6cm;
-  padding-bottom: 1.6cm;
+  /* Safe Area / Margins for Book Print + 0.3cm Bleed compensation */
+  padding-top: 1.9cm;
+  padding-bottom: 1.9cm;
 }
 
 /* Aged Deckled Edge Border Effect */
@@ -99,16 +100,16 @@ body {
 }
 
 /* Facing Pages Logic for Book Binding Margins */
-/* Halaman Ganjil (Kanan): Jilid di Kiri 3.0cm, Luar di Kanan 1.6cm */
+/* Halaman Ganjil (Kanan): Jilid di Kiri 3.3cm, Luar di Kanan 1.9cm (termasuk bleed 3mm) */
 .a4-page:nth-child(odd) {
-  padding-left: 3.0cm;
-  padding-right: 1.6cm;
+  padding-left: 3.3cm;
+  padding-right: 1.9cm;
 }
 
-/* Halaman Genap (Kiri): Jilid di Kanan 3.0cm, Luar di Kiri 1.6cm */
+/* Halaman Genap (Kiri): Jilid di Kanan 3.3cm, Luar di Kiri 1.9cm (termasuk bleed 3mm) */
 .a4-page:nth-child(even) {
-  padding-left: 1.6cm;
-  padding-right: 3.0cm;
+  padding-left: 1.9cm;
+  padding-right: 3.3cm;
 }
 
 /* ========================================================
@@ -397,7 +398,7 @@ body {
   }
   
   @page {
-    size: A4 portrait;
+    size: 216mm 303mm; /* A4 + 3mm Bleed for Professional Print */
     margin: 0;
   }
   
