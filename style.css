@@ -1,0 +1,420 @@
+@import "tailwindcss";
+
+@theme {
+  --color-newspaper: #f4f0e6;
+  --color-aged-paper: #ebdcc9;
+  --color-cardboard: #cca578;
+  --color-ink: #1c1815;
+  --color-stamp-red: #9e2a2b;
+  --color-stamp-blue: #1d3557;
+  
+  --font-gothic: "Pirata One", cursive, serif;
+  --font-serif: "Playfair Display", serif;
+  --font-cinzel: "Cinzel", serif;
+  --font-typewriter: "Special Elite", "Courier Prime", monospace;
+  --font-handwriting: "Caveat", cursive;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: #784826;
+  background-image: url('/corkboard_bg.jpg');
+  background-repeat: repeat;
+  background-size: 320px 320px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* 3D Pushpins for Mading Vintage Feel */
+.pushpin {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  z-index: 40;
+  box-shadow: 
+    2px 4px 6px rgba(0,0,0,0.6),
+    inset -2px -2px 4px rgba(0,0,0,0.4),
+    inset 2px 2px 4px rgba(255,255,255,0.7);
+  pointer-events: none;
+}
+.pushpin::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+}
+.pushpin-red { background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b); }
+.pushpin-yellow { background: radial-gradient(circle at 35% 35%, #facc15, #a16207); }
+.pushpin-green { background: radial-gradient(circle at 35% 35%, #22c55e, #15803d); }
+.pushpin-blue { background: radial-gradient(circle at 35% 35%, #3b82f6, #1e40af); }
+
+/* ========================================================
+   A4 PAGE DIMENSIONS & REALISTIC VINTAGE PAPER FEEL
+   ======================================================== */
+.a4-page {
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto 2.5rem auto;
+  background-color: #f7f3e8;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  page-break-after: always;
+  
+  /* Deep antique paper drop shadow on corkboard */
+  box-shadow: 
+    0 4px 10px rgba(0,0,0,0.5),
+    0 15px 35px rgba(0,0,0,0.55),
+    0 30px 60px rgba(0,0,0,0.65),
+    inset 0 0 80px rgba(160, 120, 60, 0.15);
+  
+  /* Vintage paper grain & subtle age stains */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(180, 140, 90, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(140, 100, 50, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(200, 160, 100, 0.05) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+  background-size: cover, cover, cover, auto;
+  
+  /* Safe Area / Margins for Book Print */
+  padding-top: 1.6cm;
+  padding-bottom: 1.6cm;
+}
+
+/* Aged Deckled Edge Border Effect */
+.a4-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(139, 94, 60, 0.25);
+  box-shadow: inset 0 0 20px rgba(115, 75, 40, 0.12);
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Facing Pages Logic for Book Binding Margins */
+/* Halaman Ganjil (Kanan): Jilid di Kiri 3.0cm, Luar di Kanan 1.6cm */
+.a4-page:nth-child(odd) {
+  padding-left: 3.0cm;
+  padding-right: 1.6cm;
+}
+
+/* Halaman Genap (Kiri): Jilid di Kanan 3.0cm, Luar di Kiri 1.6cm */
+.a4-page:nth-child(even) {
+  padding-left: 1.6cm;
+  padding-right: 3.0cm;
+}
+
+/* ========================================================
+   VINTAGE TYPOGRAPHY UTILITIES
+   ======================================================== */
+.font-gothic { font-family: var(--font-gothic); }
+.font-typewriter { font-family: var(--font-typewriter); }
+.font-handwriting { font-family: var(--font-handwriting); }
+.font-cinzel { font-family: var(--font-cinzel); }
+
+/* ========================================================
+   CARDBOARD, KRAFT & SCRAPBOOK STYLING
+   ======================================================== */
+.cardboard-card {
+  background-color: #d1b896;
+  position: relative;
+  border: 1px solid #9c7a52;
+  box-shadow: 
+    2px 4px 10px rgba(0,0,0,0.25),
+    inset 0 0 30px rgba(110, 75, 35, 0.25);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.25'/%3E%3C/svg%3E");
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardboard-card:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  box-shadow: 4px 8px 18px rgba(0,0,0,0.35);
+  z-index: 25;
+}
+
+/* Kraft Variant */
+.cardboard-kraft {
+  background-color: #c4a174;
+  border: 1px dashed #7a5832;
+  box-shadow: 
+    2px 3px 8px rgba(0,0,0,0.2),
+    inset 0 0 25px rgba(90, 60, 25, 0.3);
+}
+
+/* Antique Parchment Variant */
+.cardboard-parchment {
+  background-color: #f0e4cc;
+  border: 1px solid #ab9273;
+  box-shadow: 
+    2px 4px 9px rgba(0,0,0,0.18),
+    inset 0 0 20px rgba(160, 120, 60, 0.15);
+}
+
+/* ========================================================
+   AUTHENTIC SCRAPBOOK EPHEMERA (TAPE, CLIPS, STAMPS, PINS)
+   ======================================================== */
+
+/* Washi Tape / Masking Tape (Solid Antique Craft Paper, No Glassmorphism) */
+.washi-tape {
+  position: absolute;
+  height: 22px;
+  background-color: #e5d3b3;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  z-index: 15;
+  clip-path: polygon(
+    0% 10%, 4% 0%, 96% 0%, 100% 12%, 97% 90%, 93% 100%, 7% 100%, 0% 88%
+  );
+  border-left: 1px dashed #8b683e;
+  border-right: 1px dashed #8b683e;
+}
+
+.washi-tape-top {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2.5deg);
+  width: 75px;
+}
+
+.washi-tape-diagonal-left {
+  top: -8px;
+  left: -12px;
+  width: 60px;
+  transform: rotate(-35deg);
+  background-color: #d8be97;
+}
+
+.washi-tape-diagonal-right {
+  top: -8px;
+  right: -12px;
+  width: 60px;
+  transform: rotate(35deg);
+  background-color: #e2c9a1;
+}
+
+/* Paperclip (Antique Brass) */
+.paperclip-top {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  width: 14px;
+  height: 38px;
+  border: 2px solid #8c6d3b;
+  border-radius: 8px 8px 6px 6px;
+  background: transparent;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.35);
+  z-index: 20;
+  pointer-events: none;
+}
+.paperclip-top::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 1px;
+  width: 8px;
+  height: 22px;
+  border: 2px solid #b38e4f;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Brass Photo Mounting Corners */
+.photo-corner-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 16px solid #5a422a;
+  border-right: 16px solid transparent;
+  z-index: 10;
+}
+.photo-corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 16px solid #5a422a;
+  border-left: 16px solid transparent;
+  z-index: 10;
+}
+.photo-corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 16px solid #5a422a;
+  border-right: 16px solid transparent;
+  z-index: 10;
+}
+.photo-corner-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 16px solid #5a422a;
+  border-left: 16px solid transparent;
+  z-index: 10;
+}
+
+/* Rubber Ink Stamps */
+.rubber-stamp {
+  display: inline-block;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border: 2px solid var(--color-stamp-red);
+  color: var(--color-stamp-red);
+  font-family: var(--font-typewriter);
+  border-radius: 3px;
+  opacity: 0.85;
+  transform: rotate(-6deg);
+  mask-image: radial-gradient(circle, black 65%, rgba(0,0,0,0.6) 95%);
+  user-select: none;
+}
+
+.rubber-stamp-blue {
+  border-color: var(--color-stamp-blue);
+  color: var(--color-stamp-blue);
+  transform: rotate(5deg);
+}
+
+.rubber-stamp-round {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--color-stamp-red);
+  font-size: 8px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Coffee Cup Stain Ring */
+.coffee-ring {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid rgba(112, 70, 25, 0.18);
+  box-shadow: 
+    0 0 0 2px rgba(112, 70, 25, 0.08),
+    inset 0 0 10px rgba(112, 70, 25, 0.12);
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Vintage Postmark Stamp with Waves */
+.postal-mark {
+  position: absolute;
+  width: 75px;
+  height: 45px;
+  border: 1px solid rgba(30, 30, 30, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-typewriter);
+  font-size: 8px;
+  color: rgba(30, 30, 30, 0.5);
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+.postal-mark::after {
+  content: '≈≈≈≈≈';
+  position: absolute;
+  right: -32px;
+  font-size: 16px;
+  letter-spacing: -2px;
+  color: rgba(30, 30, 30, 0.4);
+}
+
+/* Vintage Classified Ads Box */
+.classified-box {
+  border: 1px solid var(--color-ink);
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.02);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+/* Vintage Ornate Dividers */
+.vintage-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+.vintage-divider::before,
+.vintage-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-ink);
+}
+
+.vintage-photo-frame {
+  position: relative;
+  background: #fdfbf7;
+  padding: 6px 6px 16px 6px;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.25);
+  border: 1px solid #d5cbba;
+}
+
+.vintage-photo-img {
+  filter: sepia(0.25) contrast(1.15) brightness(0.95) grayscale(0.2);
+  transition: filter 0.4s ease;
+}
+.vintage-photo-img:hover {
+  filter: sepia(0) contrast(1) brightness(1) grayscale(0);
+}
+
+/* ========================================================
+   PRINT LOGIC (Strict A4)
+   ======================================================== */
+@media print {
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  
+  .a4-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  
+  nav, #toast-container, .no-print {
+    display: none !important;
+  }
+}
+
+/* Toast Animations */
+.toast-enter { animation: slideIn 0.3s ease-out forwards; }
+.toast-leave { animation: slideOut 0.3s ease-in forwards; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-20px); } }
