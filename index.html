@@ -38,130 +38,94 @@
     <div id="yearbook-container" class="pt-24 pb-16 w-full flex flex-col items-center">
       
       <!-- ========================================================
-           PAGE 1: VINTAGE NEWSPAPER COVER & FRONT PAGE
+           PAGE 1: EXACT NEWSPAPER COVER LAYOUT (FROM ORIGINAL REFERENCE)
            ======================================================== -->
       <div class="a4-page" id="page-cover">
         <!-- 3D Mading Pushpins -->
         <div class="pushpin pushpin-red" style="top: 12px; left: 18px;"></div>
         <div class="pushpin pushpin-yellow" style="top: 12px; right: 18px;"></div>
 
-        <div class="h-full flex flex-col justify-between relative">
+        <div class="h-full flex flex-col justify-between">
           
-          <!-- Subtle Ephemera: Coffee Ring & Postmark -->
-          <div class="coffee-ring" style="top: -15px; left: -10px;"></div>
-          <div class="postal-mark" style="top: 15px; right: 10px;">JUN 2026</div>
+          <!-- 1. TOP MASTHEAD SECTION -->
+          <div>
+            <!-- Top Contributor Row -->
+            <div class="flex justify-between items-end border-b border-ink pb-1 font-typewriter text-[11px] uppercase tracking-widest">
+              <div class="w-1/3 text-left">
+                <span>EST. 2026</span><br>
+                <span>CLASS A</span>
+              </div>
+              <div class="w-1/3 text-center">
+                <span class="block text-[9px] tracking-wider text-ink/80">TOP CONTRIBUTOR</span>
+                <span class="font-gothic text-2xl font-bold tracking-wider leading-none text-ink">Tecnoa</span>
+              </div>
+              <div class="w-1/3 text-right">
+                <span>34°41'N / 135°29'E</span>
+              </div>
+            </div>
 
-          <!-- Top Masthead Header -->
-          <div class="border-b-2 border-ink pb-1 mb-1 font-typewriter text-[11px] flex justify-between items-end">
-            <div class="w-1/3 text-left leading-tight">
-              <strong>VOL. XXIV · NO. 104</strong><br>
-              <span>PRICE: FIVE CENTS</span>
+            <!-- Double Separation Lines -->
+            <div class="border-t-2 border-b-2 border-ink py-0.5 my-1.5"></div>
+
+            <!-- Giant Title -->
+            <div class="text-center my-2">
+              <h1 class="font-serif font-black text-7xl md:text-8xl tracking-tight text-ink uppercase leading-none">
+                TECNOA
+              </h1>
             </div>
-            <div class="w-1/3 text-center leading-tight">
-              <span class="font-gothic text-xl block leading-none">The Official Gazette</span>
-              <span class="font-bold tracking-widest text-[9px] uppercase">FACULTY OF INFORMATICS & COMPUTER SCIENCE</span>
-            </div>
-            <div class="w-1/3 text-right leading-tight">
-              <span>LAT: 34°41'N / 135°29'E</span><br>
-              <strong>JUNE 2026 EDITION</strong>
-            </div>
+
+            <!-- Bottom Line of Masthead -->
+            <div class="border-b-2 border-ink mb-2"></div>
           </div>
 
-          <!-- Weather & Notice Bar -->
-          <div class="border-t border-b-2 border-ink py-1 mb-3 font-typewriter text-[10px] flex justify-between items-center text-ink/90">
-            <span>WEATHER: 100% PROBABILITY OF SYNTAX ERRORS</span>
-            <span class="font-bold tracking-wider uppercase text-center">[ SPECIAL GRADUATION COMMEMORATIVE EDITION ]</span>
-            <span>CIRCULATION: 35 CADETS</span>
-          </div>
-
-          <!-- Main Masthead Headline -->
-          <div class="text-center my-1 relative">
-            <h1 class="font-gothic text-7xl md:text-8xl tracking-tight text-ink uppercase leading-none">TECNOA</h1>
-            <div class="vintage-divider my-2">
-              <h2 class="font-cinzel text-base md:text-lg tracking-widest uppercase font-bold text-ink/90">
-                TECHNOLOGY INFORMATIC FOR A CLASS
-              </h2>
-            </div>
-          </div>
-
-          <!-- Main 2-Column Newspaper Layout -->
-          <div class="grid grid-cols-12 gap-5 flex-grow items-stretch my-1">
+          <!-- 2. MIDDLE SECTION: Large Main Photo (Left) + 2 Information Boxes (Right) -->
+          <div class="grid grid-cols-12 gap-3 flex-grow my-1 items-stretch">
             
-            <!-- Left Column: Main Lead Story & Photo (8 cols) -->
-            <div class="col-span-8 flex flex-col justify-between">
-              
-              <!-- Lead Story Banner -->
-              <div class="border-b-2 border-ink pb-1 mb-2">
-                <h3 class="font-serif italic font-bold text-xl leading-tight">
-                  "THE CLASS WHERE ANCIENT ALGORITHMS MEET MODERN FRAMEWORKS"
-                </h3>
+            <!-- Left: Large Vertical Main Photo with Header Banner -->
+            <div class="col-span-8 flex flex-col border-2 border-ink p-1 bg-white">
+              <div class="border-b border-ink py-1 text-center font-serif italic text-xs tracking-widest uppercase font-bold text-ink bg-[#fcfaf4]">
+                THE CLASS WHERE TRADITION MEETS INNOVATION
               </div>
-
-              <!-- Main Photo with Tape & Paperclip -->
-              <div class="relative cardboard-card p-2 mb-3" style="transform: rotate(-0.5deg);">
-                <div class="washi-tape washi-tape-top"></div>
-                <div class="overflow-hidden border border-ink/40 bg-white p-1">
-                  <img src="/main_photo.jpg" alt="Class of Tech" class="w-full h-44 object-cover vintage-photo-img filter contrast-125">
-                </div>
-                <div class="pt-1.5 flex justify-between items-center font-typewriter text-[10px] text-ink/80">
-                  <span>Photo Archive #001: Computing Center Assembly (1958 - 2026)</span>
-                  <span class="font-bold text-[#8b1e1e]">[CONFIDENTIAL]</span>
-                </div>
+              <div class="flex-grow overflow-hidden relative mt-1 bg-ink/5">
+                <img src="/main_photo.jpg" alt="Vintage Computing Lab" class="w-full h-full object-cover grayscale contrast-125 filter">
               </div>
-
-              <!-- Lead Article Body with Drop Cap -->
-              <div class="grid grid-cols-2 gap-3 flex-grow font-typewriter text-[11px] leading-relaxed text-justify">
-                <div>
-                  <p>
-                    <span class="float-left mr-2 font-gothic text-4xl leading-none text-ink bg-ink text-[#f4f0e6] px-1.5 py-0.5 border border-ink">T</span>
-                    ECNOA stands as the definitive assembly of thirty-five technological visionaries. From the early dawn of rudimentary logic circuits to complex distributed systems, this cadre of informatics specialists has redefined collegiate excellence through dedication and rigorous terminal debugging.
-                  </p>
-                </div>
-                <div>
-                  <p>
-                    Within these archived pages lie the personal dossiers, triumphs, and candid memoirs of thirty-five cadets. May their algorithms remain forever unyielding and their legacy permanently etched into the grand repository of history.
-                  </p>
-                </div>
-              </div>
-
             </div>
 
-            <!-- Right Column: Highlights, Building Photo & Seal (4 cols) -->
-            <div class="col-span-4 flex flex-col justify-between border-l-2 border-ink pl-4">
+            <!-- Right: 2 Stacked Boxes (Established + Highlights) -->
+            <div class="col-span-4 flex flex-col justify-between gap-2">
               
-              <!-- Official Stamp Box -->
-              <div class="border-2 border-ink p-2 text-center bg-[#ede4d3] mb-2">
-                <span class="font-typewriter font-bold text-[10px] uppercase block tracking-widest">OFFICIAL SEAL</span>
-                <div class="my-1 flex justify-center">
-                  <div class="rubber-stamp">VERIFIED 2026</div>
+              <!-- Top Box: Established -->
+              <div class="border-2 border-ink flex flex-col">
+                <div class="bg-ink text-[#f4f0e6] py-1 text-center font-serif italic text-xs tracking-widest uppercase font-bold">
+                  ESTABLISHED IN 2026
                 </div>
-                <span class="font-typewriter text-[9px] text-ink/80">Classroom A, 4th Floor</span>
+                <div class="p-2 font-handwriting text-sm text-justify leading-tight bg-[#fcfaf4] text-ink">
+                  A group of passionate students formed TECNOA in a laboratory that, according to the legend, was destined for technological greatness.
+                </div>
               </div>
 
-              <!-- Secondary Building Photo -->
-              <div class="vintage-photo-frame mb-2" style="transform: rotate(1deg);">
-                <div class="photo-corner-tl"></div>
-                <div class="photo-corner-tr"></div>
-                <div class="photo-corner-bl"></div>
-                <div class="photo-corner-br"></div>
-                <div class="w-full h-28 overflow-hidden bg-ink/10">
-                  <img src="/building_photo.jpg" alt="Faculty Hall" class="w-full h-full object-cover vintage-photo-img">
+              <!-- Bottom Box: Class Highlights -->
+              <div class="border-2 border-ink flex flex-col flex-grow">
+                <div class="bg-ink text-[#f4f0e6] py-1 text-center font-serif italic text-xs tracking-widest uppercase font-bold">
+                  CLASS HIGHLIGHTS
                 </div>
-                <span class="block text-center font-typewriter text-[9px] text-ink/70 mt-1 italic">Faculty Main Hallway</span>
-              </div>
-
-              <!-- Class Highlights Box -->
-              <div class="border border-ink p-2 bg-[#ebe1ce] flex-grow flex flex-col justify-between font-typewriter text-[10px]">
-                <div class="font-bold border-b border-ink/40 pb-1 mb-1 uppercase tracking-wider text-center">
-                  COMMENDATIONS
-                </div>
-                <ul class="space-y-1 text-justify">
-                  <li>— <strong>35 Cadets:</strong> Fully Certified</li>
-                  <li>— <strong>10,000+ Commits:</strong> Merged Cleanly</li>
-                  <li>— <strong>Zero Downtime:</strong> In Final Capstone</li>
-                </ul>
-                <div class="pt-2 border-t border-ink/40 text-center font-handwriting text-base font-bold text-[#8b1e1e]">
-                  "Signed & Witnessed by All"
+                <div class="p-2 flex flex-col justify-between flex-grow bg-[#fcfaf4] text-[10px] font-sans text-ink">
+                  <div class="border-b border-ink/20 pb-1">
+                    <h4 class="font-serif font-bold text-xs">Web Development</h4>
+                    <p class="font-handwriting text-xs text-ink/80 leading-none mt-0.5">Mastering modern frameworks & architectures.</p>
+                  </div>
+                  <div class="border-b border-ink/20 pb-1">
+                    <h4 class="font-serif font-bold text-xs">Data Structures</h4>
+                    <p class="font-handwriting text-xs text-ink/80 leading-none mt-0.5">Building blocks of efficient algorithms.</p>
+                  </div>
+                  <div class="border-b border-ink/20 pb-1">
+                    <h4 class="font-serif font-bold text-xs">Artificial Intelligence</h4>
+                    <p class="font-handwriting text-xs text-ink/80 leading-none mt-0.5">Pioneering automation & neural models.</p>
+                  </div>
+                  <div>
+                    <h4 class="font-serif font-bold text-xs">Cyber Security</h4>
+                    <p class="font-handwriting text-xs text-ink/80 leading-none mt-0.5">Defense protocols & penetration testing.</p>
+                  </div>
                 </div>
               </div>
 
@@ -169,11 +133,31 @@
 
           </div>
 
-          <!-- Bottom Banner -->
-          <div class="border-t-2 border-ink pt-1.5 flex justify-between items-center font-typewriter text-xs">
-            <span class="font-bold tracking-wider">PAGE 01 · FRONT COVER</span>
-            <span class="italic text-[11px]">TECNOA ARCHIVES · PLEASE TURN OVER FOR FACULTY MEMOIRS</span>
-            <span class="font-bold">PRINT EDITION A4</span>
+          <!-- 3. BOTTOM SECTION: 3 Columns (Square Photo | Drop Cap Article | Story Continuation) -->
+          <div class="grid grid-cols-12 gap-3 mt-2 pt-2 border-t-2 border-ink items-stretch">
+            
+            <!-- Bottom Left: Small Square Photo of Building (3.5 cols) -->
+            <div class="col-span-3 border-2 border-ink p-1 bg-white flex flex-col">
+              <div class="w-full h-28 overflow-hidden bg-ink/5 flex-grow">
+                <img src="/building_photo.jpg" alt="University Hall" class="w-full h-full object-cover grayscale contrast-125 filter">
+              </div>
+            </div>
+
+            <!-- Bottom Center: Drop Cap Article (4.5 cols) -->
+            <div class="col-span-5 border-2 border-ink p-2 bg-[#fcfaf4] flex flex-col justify-center">
+              <div class="font-handwriting text-sm leading-snug text-justify text-ink">
+                <div class="float-left mr-2 bg-ink text-[#f4f0e6] px-1.5 py-0.5 font-gothic text-3xl leading-none">T</div>
+                Known for its vibrant technology scene, cutting-edge code, and rich academic heritage, TECNOA stands as one of the most dynamic classes. As a bustling hub of informatics, it is where ancient traditions coexist with modern marvels.
+              </div>
+            </div>
+
+            <!-- Bottom Right: Story Continuation (4 cols) -->
+            <div class="col-span-4 border-2 border-ink p-2 bg-[#fcfaf4] flex flex-col justify-center">
+              <p class="font-handwriting text-sm leading-snug text-justify text-ink">
+                TECNOA is a representation of the winds of change and freedom that reflects the spirit of innovation. As a class of modern tech and culture, this concept depicts how our ideas transform into a creative digital world.
+              </p>
+            </div>
+
           </div>
 
         </div>
