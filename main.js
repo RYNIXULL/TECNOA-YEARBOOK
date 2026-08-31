@@ -197,13 +197,13 @@ function renderStudentPages() {
           </div>
 
           <!-- Vintage Photo Frame -->
-          <div class="vintage-photo-frame mb-2 relative group cursor-pointer" onclick="showToast('Viewing dossier for ${student.name}', 'info')">
-            <div class="w-full h-36 overflow-hidden bg-ink/10 border border-ink/20">
+          <div class="vintage-photo-frame mb-2 mx-auto w-3/4 relative group cursor-pointer" onclick="showToast('Viewing dossier for ${student.name}', 'info')">
+            <div class="w-full aspect-square overflow-hidden bg-ink/10 border border-ink/20">
               <img src="${student.photo}" alt="${student.name}" class="w-full h-full object-cover vintage-photo-img">
             </div>
             <!-- Photo caption -->
             <div class="mt-1 flex justify-between items-center font-typewriter text-[9px] text-ink/70">
-              <span>PHOTO: VERIFIED</span>
+              <span>VERIFIED</span>
               <span class="font-mono text-[8px]">${student.social}</span>
             </div>
           </div>
@@ -256,8 +256,8 @@ function renderStudentPages() {
           <span class="italic">ARCHIVE PAGE 0${pageNumber}</span>
         </div>
         
-        <!-- 6 Students Grid -->
-        <div class="grid grid-cols-3 gap-3 flex-grow items-stretch py-1">
+        <!-- 6 Students Grid (2 columns x 3 rows) -->
+        <div class="grid grid-cols-2 gap-5 flex-grow items-stretch py-1">
           ${studentsHTML}
         </div>
         
